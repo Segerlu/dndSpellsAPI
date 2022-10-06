@@ -1,0 +1,46 @@
+h1 {
+
+}
+
+h2 {
+
+}
+
+.result-card {
+    border: solid black 1px;
+    inline-size: 25%;
+    margin: .5em;
+    min-width: fit-content;
+    padding-left: 2em;
+}
+
+#results {
+    display: flex;
+    inline-size: 80em;
+    border: solid;
+    width: auto;
+    flex-wrap: wrap;
+}
+
+#searchArea {
+    margin-top: 5%;
+    display: grid;
+}
+
+#updateArea {
+    display: grid;
+    margin-left: 5em;
+}
+
+#bannerCanvas {
+    display: flex;
+}
+
+input, button {
+    max-height: fit-content;
+}
+
+#viewAllArea {
+    margin-left: 5em;
+    padding-top: 5%;
+}
