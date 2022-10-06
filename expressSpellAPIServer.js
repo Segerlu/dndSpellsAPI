@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(cors());
 
 var corsOptions = {
-    origin: 'file://wsl%24/Ubuntu/home/steve/.local/classRepositories/dndspellsapi/index.html',
+    origin: '*',
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
   }
 
@@ -24,7 +24,7 @@ const PORT = 8006;
 client.connect();
 
 app.get('/spells', (req, res) => {
-    client.query("SELECT * FROM spells;")
+    client.query("SELECT * FROM spells ORDER BY index;")
     .then(data => {
         res.send(data.rows);
     })
@@ -48,7 +48,7 @@ app.get('/spells/id/:index', (req, res) => {
 app.get('/spells/name/:name', (req, res) => {
     let spell = req.params.name.replace('+', ' ');
 
-    client.query(`SELECT * FROM spells WHERE LOWER(name) LIKE LOWER('${spell}%');`)
+    client.query(`SELECT * FROM spells WHERE LOWER(name) LIKE LOWER('${spell}%') ORDER BY index;`)
     .then((data) => {
         if (data.rows.length > 0) {
             res.send(data.rows);
@@ -73,13 +73,20 @@ app.get('/spells/update/:spell/:newName/', (req, res) => {
 
 app.post('/spells', (req, res) => {
     let data = req.body;
+    console.log(data);
 
-    data.map(spell => {
-       client.query(`INSERT INTO spells (index, name, url) VALUES ('${spell.index}', '${spell.name}', '${spell.url}');`)
-    
-    })
+    if (Array.isArray(data)) {
+
+        data.map(spell => {
+            client.query(`INSERT INTO spells (index, name, url) VALUES ('${spell.index}', '${spell.name}', '${spell.url}');`)
+            .catch(err => console.error('connection error', err.stack))
+        })
+    } else {
+        client.query(`INSERT INTO spells (index, name, url) VALUES ('${data.index}', '${data.name}', '${data.url}');`)
+        .catch(err => console.error('connection error', err.stack))
+    }
         res.send("spells added")
-})
+    })
     //doesn't work
 // app.get('/spells/add/:index/:name', (req, res) => {
 //     let index = req.params.index;
@@ -97,7 +104,7 @@ app.post('/spells', (req, res) => {
 
 app.get('/spells/delete/:spell', (req, res) => {
     let spell = req.params.spell.replace('+', ' ');
-
+    console.log(spell)
     client.query(`DELETE FROM spells WHERE LOWER(name) = '${spell}';`)
     .then(data => {
         res.send(`${spell} deleted`);

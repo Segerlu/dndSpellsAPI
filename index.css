@@ -3,7 +3,7 @@ h1 {
 }
 
 h2 {
-
+    font-size: smaller;
 }
 
 .result-card {
@@ -12,6 +12,7 @@ h2 {
     margin: .5em;
     min-width: fit-content;
     padding-left: 2em;
+    background-color: aliceblue;
 }
 
 #results {
@@ -22,12 +23,7 @@ h2 {
     flex-wrap: wrap;
 }
 
-#searchArea {
-    margin-top: 5%;
-    display: grid;
-}
-
-#updateArea {
+.inputArea {
     display: grid;
     margin-left: 5em;
 }
@@ -37,7 +33,7 @@ h2 {
 }
 
 input, button {
-    max-height: fit-content;
+    max-height: 2em;
 }
 
 #viewAllArea {
