@@ -5,7 +5,7 @@ let cors = require('cors');
 let app = express();
 const config = (process.env.NODE_ENV ? process.env.NODE_ENV : 'postgresql://postgres:docker@127.0.0.1:5432/dndspellsapidb');
 const connectionString = config;
-let passcode = con['passcode'].password;
+// let passcode = con['passcode'].password;
 
 const client = new Client({
     connectionString: connectionString,
