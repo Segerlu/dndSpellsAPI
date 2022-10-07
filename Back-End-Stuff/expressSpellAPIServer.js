@@ -3,7 +3,7 @@ let {Client} = require('pg');
 let con = require('./config.json')
 let cors = require('cors');
 let app = express();
-const config = con[process.env.NODE_ENV || 'postgresql://postgres:docker@127.0.0.1:5432/dndspellsapidb'];
+const config = (process.env.NODE_ENV ? process.env.NODE_ENV : 'postgresql://postgres:docker@127.0.0.1:5432/dndspellsapidb');
 const connectionString = config;
 let passcode = con['passcode'].password;
 
@@ -15,11 +15,10 @@ app.use(express.json());
 app.use(cors());
 
 var corsOptions = {
-    origin: process.env.URLFRONT || 'localhost:9999',
+    origin: process.env.URLFRONT ? process.env.URLFRONT : 'localhost:9999',
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
   }
-
-const PORT = 8006;
+const PORT = process.env.PORT ? process.env.PORT : 8006;
 
 client.connect();
 
