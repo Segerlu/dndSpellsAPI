@@ -4,10 +4,10 @@ let searchButton = document.getElementById('searchButton');
 let updateOldName = document.getElementById('oldname');
 let updateNewName = document.getElementById('newname');
 let newSpellName = document.getElementById('name');
-//const ENV = 'dev';
-const ENV = 'production';
+const ENV = 'dev';
+//const ENV = 'production';
 
-let baseUrl = ENV !== 'dev' ? 'https://dndspellapiwwizards.onrender.com' : 'http://localhost:8006/spells'
+let baseUrl = ENV !== 'dev' ? 'https://dndspellapiwwizardsbackend.onrender.com' : 'http://localhost:8006/spells'
 let selected;
 
 resultsCanvas.addEventListener('mousedown', e => {
