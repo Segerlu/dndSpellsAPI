@@ -66,8 +66,8 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start-dev": "nodemon gateServer.js",
-    "start-deploy": "node gateServer.js"
+    "start:dev": "nodemon gateServer.js",
+    "start:deploy": "node gateServer.js"
   },
   "author": "",
   "license": "ISC"
