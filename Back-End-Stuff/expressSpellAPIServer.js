@@ -15,10 +15,12 @@ app.use(express.json());
 app.use(cors());
 
 var corsOptions = {
-    origin: process.env.URLFRONT ? process.env.URLFRONT : 'localhost:9999',
+    //origin: process.env.URLFRONT ? process.env.URLFRONT : 'localhost:9999',
+    origin: process.env.URLFRONT,
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
   }
-const PORT = process.env.PORT ? process.env.PORT : 8006;
+//const PORT = process.env.PORT ? process.env.PORT : 8006;
+const PORT = process.env.PORT;
 
 client.connect();
 

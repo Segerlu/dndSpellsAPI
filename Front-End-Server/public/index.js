@@ -7,8 +7,10 @@ let newSpellName = document.getElementById('name');
 //const ENV = 'dev';
 const ENV = 'production';
 
-let baseUrl = ENV !== 'dev' ? 'https://dndspellapiwwizardsbackend.onrender.com' : 'http://localhost:8006/spells'
+//let baseUrl = ENV !== 'dev' ? 'https://dndspellapiwwizardsbackend.onrender.com' : 'http://localhost:8006/spells'
+let baseUrl = 'https://dndspellapiwwizardsbackend.onrender.com'
 let selected;
+console.log(baseUrl)
 
 resultsCanvas.addEventListener('mousedown', e => {
     let spell = e.target.parentNode;
