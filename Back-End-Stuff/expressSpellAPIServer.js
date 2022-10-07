@@ -1,6 +1,6 @@
 let express =  require("express")
 let {Client} = require('pg');
-let con = require('./config.json')
+// let con = require('./config.json')
 let cors = require('cors');
 let app = express();
 const config = (process.env.NODE_ENV ? process.env.NODE_ENV : 'postgresql://postgres:docker@127.0.0.1:5432/dndspellsapidb');
