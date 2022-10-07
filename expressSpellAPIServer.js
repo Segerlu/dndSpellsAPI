@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(cors());
 
 var corsOptions = {
-    origin: '*',
+    origin: '/home/steve/.local/classRepositories/dndSpellsAPI/index.html',
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
   }
 
@@ -104,9 +104,9 @@ app.post('/spells', (req, res) => {
 
 app.get('/spells/delete/:spell', (req, res) => {
     let spell = req.params.spell.replace('+', ' ');
-    console.log(spell)
     client.query(`DELETE FROM spells WHERE LOWER(name) = '${spell}';`)
     .then(data => {
+        console.log("spell deleted")
         res.send(`${spell} deleted`);
     })
 
