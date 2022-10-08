@@ -29,6 +29,9 @@ app.get('/spells', (req, res) => {
     .then(data => {
         res.send(data.rows);
     })
+    .catch(er => {
+        res.send(er)
+    })
 });
 
 app.get('/spells/id/:index', (req, res) => {

@@ -8,7 +8,7 @@ let newSpellName = document.getElementById('name');
 const ENV = 'production';
 
 //let baseUrl = ENV !== 'dev' ? 'https://dndspellapiwwizardsbackend.onrender.com' : 'http://localhost:8006/spells'
-let baseUrl = 'https://dndspellapiwwizardsbackend.onrender.com'
+let baseUrl = 'https://dndspellapiwwizardsbackend.onrender.com/spells'
 let selected;
 console.log(baseUrl)
 
